@@ -1,7 +1,16 @@
-Created with care by Adam Bloom, Chris Bonilla, Hannah Cline, and Jonathan Davis.
+Educational Consulting from Hannah Cline, an amazing teacher who inspires us all.
 
-SubShell provides educators with a simple GUI to create a template for your substitue teacher. No longer go to school when you're sick just becuase creating plans for the substitute teacher will take to long. Creates a word document  where you run the program.
-Concept from Hannah Cline.
+SubShell provides educators with a simple GUI to create a template for your substitue teacher. A public school teacher has stated that it has saved him/her hours of time.
 
-To use the application on windows, download the dist .zip file, then run makedoc.exe. Do not leave any fields blanks when using program.
+Created with care by Adam Bloom, Chris Bonilla, Hannah Cline, and Jonathan Davis. Works on Mac and PC, no internet connection requried.
+
+For best results, always edit documents using Microsoft Word. I also advise a "dry-run" with faux data to see the potential of the output.
+
+Windows
+download the dist .zip file, then run makedoc.exe. Do not leave any fields blanks when using program. A word document will appear where you ran the program.
+
+Mac
+Install Wine: https://wiki.winehq.org/MacOS
+Install XQuartz: https://www.xquartz.org/releases/XQuartz-2.7.11.html
+download the dist .zip file, then run makedoc.exe. Do not leave any fields blanks when using program. A word document will appear where you ran the program.
 
