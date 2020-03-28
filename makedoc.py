@@ -3,7 +3,7 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 import easygui
 import json
-
+#wind add
 
 document = Document()
 jsonInfo = {"a", "b", "c", "d"}
