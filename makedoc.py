@@ -1,9 +1,8 @@
-from docx import Document
-from docx.enum.table import WD_TABLE_ALIGNMENT
+import docx as Document
+import docx.enum.table
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 import easygui
 import json
-#wind add
 
 document = Document()
 jsonInfo = {"a", "b", "c", "d"}
@@ -12,7 +11,20 @@ guiInput = 1
 startTimes = []
 endTimes = []
 eventTitles = []
+#todo Create a new dictionary here to handle user input
 
+
+def storeData(fieldName, data):
+    #todo after each input prompt, save the data to the dictionary. Fieldname is the key, and data is the value
+    pass
+
+def getData(rosterName):
+    #todo read in data from a saved file into the dictionary, optionally will run at beggining
+    pass
+
+def writeData(rosterName):
+    #todo write the dictionary saved in memory to a save file with the name being the roster, only runs at end of program once
+    pass
 
 def addHead():
     # add date heading
@@ -36,7 +48,7 @@ def addHead():
                     errmsg = errmsg + ('"%s" is a required field.\n\n' % fieldNames[i])
             if errmsg == "": break  # no problems found
             fieldValues = easygui.multenterbox(errmsg, title, fieldNames, fieldValues)
-            print "Reply was:", fieldValues
+            print ("Reply was: " + fieldValues)
         date = fieldValues[0] + ", " + fieldValues[1] + "/" + fieldValues[2] + "/" + fieldValues[3]
 
     heading = document.add_heading(date, 0)
@@ -51,6 +63,7 @@ def addHead():
     else:
         msg = "What info would you like to appear at the top of the front page, below the title? For example, During recess and lunch, please check with the main office to determine if you are needed to cover indoor or outdoor recess or to support in the cafeteria."
         subSpecific = easygui.enterbox(msg,"Header Informaiton")
+        # todo save this data
 
     table = document.add_table(rows=1, cols=1)
     cell = table.cell(0, 0)
@@ -69,6 +82,7 @@ def trustedStudents():
         trust = jsonInfo["classroomHelpers"]
     else:
         trust = easygui.enterbox("Please enter in any information about Classroom Leaders","Classroom Leaders")
+        # todo save this data
     cell = table.cell(1, 0)
     cell.text = trust
     table.style = 'TableGrid'
@@ -86,6 +100,7 @@ def teamMembers():
     hasAnother = True
     count = 1
     teachers = []
+    # todo save this array after user is done
 
     while(hasAnother is True):
 
@@ -129,7 +144,7 @@ def teacherSchedule():
                         errmsg = errmsg + ('"%s" is a required field.\n\n' % fieldNames[i])
                 if errmsg == "": break  # no problems found
                 fieldValues = easygui.multenterbox(errmsg, title, fieldNames, fieldValues)
-                print "Reply was:", fieldValues
+                print ("Reply was:"+ fieldValues)
 
             startTimes.append(fieldValues[0])
             endTimes.append(fieldValues[1])
@@ -165,6 +180,7 @@ def teacherSchedule():
 def computerLogin():
     if(guiInput == 1):
         tusername =  easygui.enterbox("What is your computer username?","Computer Username")
+        # todo save this data, do not save password
         tpassword =  easygui.passwordbox("What is your computer password?","Computer Password")
 
     # Table header
@@ -230,15 +246,17 @@ def drillInfo():
         cell.text = "Fire Drill Procedures"
         cell = table.cell(0, 1)
         cell.text = easygui.enterbox("Please enter in any information about firedrill procedures", "Fire Drill")
+        # todo save this data
         cell = table.cell(1, 0)
         cell.text = "Lockdown Procedures"
         cell = table.cell(1, 1)
         cell.text = easygui.enterbox("Please enter in any information about lockdown procedures", "Lockdown Procedures")
+        # todo save this data
         cell = table.cell(2, 0)
         cell.text = "Shelter in Place Procedures"
         cell = table.cell(2, 1)
         cell.text = easygui.enterbox("Please enter in any information about shelter in place procedures", "Shelter in Place")
-
+        # todo save this data
 
     table.style = 'TableGrid'
 
@@ -252,7 +270,7 @@ def classMGMT():
         mgmtText = jsonInfo['classroomManagement']
     else:
         mgmtText = easygui.enterbox("Please enter in any information about classroom management","Classroom Management")
-
+        # todo save this data
     document.add_paragraph(mgmtText)
 
 
@@ -300,15 +318,6 @@ def addPlans():
 
 def saveDoc(title):
     document.save(title)
-
-
-def fetchJSON():
-
-    with open('jsonOut.txt', 'r') as myfile:
-        data = myfile.read()
-
-    return str(data)
-
 
 if __name__ == "__main__":
     addHead()
